@@ -1,8 +1,8 @@
-<?php 
+<?php
 require "db.php";
 $message = "";
 
-if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])){
+if (isset($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])) {
 
     $nom = $_POST["nom"];
     $numero = $_POST["numero"];
@@ -10,18 +10,17 @@ if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])
     $sql = "insert into joueur (nom,numero,position) values (:nom,:numero,:position)";
     $statement = $connection->prepare($sql);
 
-        if($statement->execute([":nom" => $nom, ":numero"=> $numero, ":position" => $position])){
+    if ($statement->execute([":nom" => $nom, ":numero" => $numero, ":position" => $position])) {
 
-            $message = "Ajouté avec succes";
-        };
-
+        $message = "Ajouté avec succes";
+    };
 }
 
 ?>
 
 
 
-<?php include ('./header.php') ?>
+<?php include('./header.php') ?>
 <div class="container">
 
     <div class="row">
@@ -30,28 +29,28 @@ if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])
         </div>
     </div>
 
-    <?php if(!empty($message)): ?>
+    <?php if (!empty($message)) : ?>
         <div class="alert alert-success" role="alert">
-            <?= $message;?>        
+            <?= $message; ?>
         </div>
     <?php endif; ?>
-   
+
     <div class="row">
         <div class="col my-5">
             <form method="post">
                 <div class="form-group">
-                    <label >Nom</label>
+                    <label>Nom</label>
                     <input type="text" class="form-control" name="nom">
                 </div>
                 <div class="form-group">
-                    <label >Numero</label>
+                    <label>Numero</label>
                     <input type="number" class="form-control" name="numero">
                 </div>
                 <div class="form-group">
-                    <label >Position</label>
+                    <label>Position</label>
                     <input type="text" class="form-control" name="position">
                 </div>
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>
         </div>
     </div>
@@ -62,6 +61,4 @@ if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])
 
 
 
-<?php include ('./footer.php') ?>
-
-
+<?php include('./footer.php') ?>

@@ -1,6 +1,10 @@
 <?php 
-
-
+require "db.php";
+$sql = "SELECT * FROM joueur WHERE id = :id";
+$id = $_GET["id"];
+$statement = $connection->prepare($sql);
+$statement->execute([":id" => $id]);
+$joueur = $statement->fetch(PDO::FETCH_OBJ);
 ?>
 
 
@@ -10,7 +14,7 @@
 
     <div class="row">
         <div class="col my-5">
-            <h1>Ajouter un joueur</h1>
+            <h1>Modifier un joueur</h1>
         </div>
     </div>
 
@@ -25,15 +29,15 @@
             <form method="post">
                 <div class="form-group">
                     <label >Nom</label>
-                    <input type="text" class="form-control" name="nom">
+                    <input type="text" value="<?= $joueur->nom ?>" class="form-control" name="nom">
                 </div>
                 <div class="form-group">
                     <label >Numero</label>
-                    <input type="number" class="form-control" name="numero">
+                    <input type="number" value="<?= $joueur->nom ?>" class="form-control" name="numero">
                 </div>
                 <div class="form-group">
                     <label >Position</label>
-                    <input type="text" class="form-control" name="position">
+                    <input type="text" value="<?= $joueur->nom ?>" class="form-control" name="position">
                 </div>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>

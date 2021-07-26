@@ -2,20 +2,15 @@
 $dsn = "mysql:host=localhost;port=3306;dbname=foot";
 $username = "root";
 $password = "";
-$options = [
-
-];
+$options = [];
 
 $connection = new PDO($dsn, $username, $password, $options);
 
-try{
+try {
 
-   print "connexion reussie";
+    print "connexion reussie";
+} catch (PDOExeption $e) {
 
-} catch(PDOExeption $e){
-
-print "error :" . $e->getMessage();
-die();
-
+    print "error :" . $e->getMessage();
+    die();
 };
-

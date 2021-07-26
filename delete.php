@@ -6,5 +6,3 @@ $statement = $connection->prepare($sql);
 if($statement->execute([":id" => $id])){
     header("Location: /phpcrud");
 }
-
-?>

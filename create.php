@@ -1,5 +1,6 @@
 <?php 
 require "db.php";
+$message = "";
 
 if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])){
 
@@ -11,8 +12,8 @@ if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])
 
         if($statement->execute([":nom" => $nom, ":numero"=> $numero, ":position" => $position])){
 
-            print "Ajouté avec succes";
-        }
+            $message = "Ajouté avec succes";
+        };
 
 }
 
@@ -29,6 +30,12 @@ if(isset ($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])
         </div>
     </div>
 
+    <?php if(!empty($message)): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $message;?>        
+        </div>
+    <?php endif; ?>
+   
     <div class="row">
         <div class="col my-5">
             <form method="post">
